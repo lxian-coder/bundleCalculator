@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
-    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
