@@ -19,7 +19,7 @@ import java.util.Map;
 @Slf4j
 public class BuddleFormats {
 
-     // convert the datamodels list to hashmap
+     // convert the datamodels list to Hashmap which includs the key: foramtCode and the value: buddle map
     public HashMap<String,HashMap<String,String>> createFormatsMap(List<DataModel> dataModels){
 
         HashMap<String,HashMap<String,String>> formatsMap = new HashMap<String,HashMap<String,String>>();
@@ -31,11 +31,5 @@ public class BuddleFormats {
 
          return formatsMap;
     }
-
-
-
-
-
-
 
 }

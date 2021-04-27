@@ -4,6 +4,7 @@ import darcyxian.bundle_calculator.buddleFormats.BuddleFormats;
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundle_calculator.dataModel.DataModel;
 import darcyxian.bundle_calculator.input.Input;
+import darcyxian.bundle_calculator.output.Output;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -21,9 +22,14 @@ public class BundleCalculatorApplication {
 //      a.grabInputData();
         DataBootstrap dataBootstrap = new DataBootstrap();
         DataModel dataModel = new DataModel();
-        List<DataModel> test = dataBootstrap.loadData(dataModel);
-        BuddleFormats buddleFormats = new BuddleFormats();
-        buddleFormats.createFormatsMap(test);
+        List<DataModel> dataModels = dataBootstrap.loadData(dataModel);
+//        BuddleFormats buddleFormats = new BuddleFormats();
+//        buddleFormats.createFormatsMap(test);
+        Output output = new Output();
+        output.displayFormats(dataModels);
+
+
+
     }
 
 }

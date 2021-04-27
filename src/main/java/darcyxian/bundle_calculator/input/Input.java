@@ -1,6 +1,7 @@
 package darcyxian.bundle_calculator.input;
 
 
+import darcyxian.bundle_calculator.output.Output;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,6 @@ import java.util.stream.Stream;
 @Component
 @RequiredArgsConstructor
 public class Input {
-
 
      public void grabInputData(){
          System.out.println("Please input Data (double click Enter to finish input): ");
