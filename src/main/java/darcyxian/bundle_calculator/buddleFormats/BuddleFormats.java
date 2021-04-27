@@ -4,6 +4,7 @@ package darcyxian.bundle_calculator.buddleFormats;
 
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundle_calculator.dataModel.DataModel;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -17,17 +18,17 @@ import java.util.Map;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class BuddleFormats {
-
+     DataBootstrap dataBootstrap;
      // convert the datamodels list to Hashmap which includs the key: foramtCode and the value: buddle map
-    public HashMap<String,HashMap<String,String>> createFormatsMap(List<DataModel> dataModels){
-
+    public HashMap<String,HashMap<String,String>> createFormatsMap(){
+        List<DataModel> dataModels = dataBootstrap.loadData();
         HashMap<String,HashMap<String,String>> formatsMap = new HashMap<String,HashMap<String,String>>();
-        log.info("datamodels size :"+dataModels.size());
         dataModels.forEach(dataModel->{
-             formatsMap.put(dataModel.getFormatCode(),dataModel.getBundles());
+             formatsMap.put(dataModel.getFormatCode().toLowerCase(),dataModel.getBundles());
          });
-         log.info("formatsMap:"+formatsMap.size());
+
 
          return formatsMap;
     }

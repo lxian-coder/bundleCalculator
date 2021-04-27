@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 public class DataBootstrap {
 
-    public List<DataModel> loadData (DataModel dataModel){
+    public List<DataModel> loadData (){
         List<DataModel> dataModels =new ArrayList<>();
         DataModel image = new DataModel();
         image.setFormatName("Image");
@@ -41,7 +41,6 @@ public class DataBootstrap {
         dataModels.add(video);
 
         return dataModels;
-
     }
 
 

@@ -1,11 +1,18 @@
 package darcyxian.bundle_calculator.input;
 
 
+import darcyxian.bundle_calculator.grabDataFromConsole.GrabDataFromConsole;
+import darcyxian.bundle_calculator.inputCheck.InputCheck;
 import darcyxian.bundle_calculator.output.Output;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
+import java.io.ObjectInputValidation;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,36 +24,30 @@ import java.util.stream.Stream;
  */
 @Slf4j
 @Component
-@RequiredArgsConstructor
-public class Input {
+@AllArgsConstructor
+public class Input implements ApplicationListener<ContextClosedEvent> {
 
+  private InputCheck inputCheck;
+  private Output output;
+  private GrabDataFromConsole grabDataFromConsole;
+
+    // grab data inputted by users from console
      public void grabInputData(){
-         System.out.println("Please input Data (double click Enter to finish input): ");
-         Scanner s = new Scanner(System.in);
-         // i is used to prevent user from quiting the program by type enter key at first
-         int  i = 0;
-         String inputString = " ";
-         while (true){
-             i++;
-             String line2 = s.nextLine();
-             inputString += " "+ line2;
-             // if newline is empty and it is not the first data inputted, end the input function.
-             if(line2.length() == 0 && i != 1) break;
-         }
-         // convert string to a cleanlist
-         stringToList(inputString);
 
+         System.out.println(new BigDecimal("1"));
+         output.displayFormats();
+        while (true){
+            List<String> list =grabDataFromConsole.scanDataFromConsole();
+           // if check faild, users need to input again, otherwise input will be finished
+           if (inputCheck.checkTheInputList(list)) break;
+        }
 
      }
-
-     public List<String>  stringToList(String s){
-         // convert string to arraylist
-         List<String> inputData = new ArrayList<String>(Arrays.asList(s.split(" ")));
-          // remove empty elements from the list
-         inputData.removeAll(Arrays.asList(""));
-         System.out.println("inptData : " + inputData);
-         return inputData ;
-     }
+    // convert string to a list eliminated empty elements;
 
 
+    @Override
+    public void onApplicationEvent(ContextClosedEvent event) {
+        grabInputData();
+    }
 }
