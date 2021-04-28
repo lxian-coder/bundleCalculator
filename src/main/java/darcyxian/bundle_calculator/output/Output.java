@@ -37,8 +37,8 @@ public class Output {
 
     // display the wrong message when input check faild
     public void displayWrongMessage() {
-        System.out.println("Sorry, the format of your input is not correct.Please follow the format:<Numbers of buddles> <formatcode> ");
-        System.out.println("According to the form below, input again.");
+        System.out.println("Sorry, the format of your input is not correct. A legal order looks like:<Numbers of buddles> <formatcode> ");
+        System.out.println("You can check the form below and make an order again.");
         displayFormats();
     }
 
