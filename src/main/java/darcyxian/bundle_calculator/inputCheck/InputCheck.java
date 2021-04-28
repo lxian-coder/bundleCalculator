@@ -15,10 +15,10 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class InputCheck {
-    private DataBootstrap dataBootstrap;
-    private Output output;
-    private BundleFormatsMap bundleFormatsMap;
-    private Calculate calculate;
+    private final DataBootstrap dataBootstrap;
+    private final Output output;
+    private final BundleFormatsMap bundleFormatsMap;
+    private final Calculate calculate;
 
     public boolean checkTheInputList(List<String> list) {
         int listSize = list.size();
@@ -30,20 +30,20 @@ public class InputCheck {
             return false;
         }
         // check if the input content is correct
-        for(int i =0; i<listSize;i++){
+        for (int i = 0; i < listSize; i++) {
             // check if the string is number or not
-            if(i%2 == 0){
+            if (i % 2 == 0) {
                 if (!isStrToNum(list.get(i))) {
-                    System.out.println('"'+list.get(i)+'"'+" is not a number! Please check and input again!");
+                    System.out.println('"' + list.get(i) + '"' + " is not a number! Please check and input again!");
                     return false;
                 }
                 // check if the string is the format code or not
-            }else if (!bundleFormatsMap.createFormatsMap().containsKey(list.get(i))) {
-                System.out.println('"' + list.get(i) + '"'+ " is Not a format code! Please check and input again!");
-                return  false;
+            } else if (!bundleFormatsMap.createFormatsMap().containsKey(list.get(i))) {
+                System.out.println('"' + list.get(i) + '"' + " is Not a format code! Please check and input again!");
+                return false;
             }
         }
-       calculate.calculateTheInput(list);
+        calculate.calculateTheInput(list);
         return true;
     }
 

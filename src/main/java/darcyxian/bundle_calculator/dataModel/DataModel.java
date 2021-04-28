@@ -15,5 +15,5 @@ import java.util.HashMap;
 public class DataModel {
     String formatName;
     String formatCode;
-    HashMap<String,String> bundles = new HashMap<>();
+    HashMap<String, String> bundles = new HashMap<>();
 }

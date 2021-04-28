@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
 @Component
 @AllArgsConstructor
 public class QueryBundleFormatsMap {
-    private BundleFormatsMap bundleFormatsMap;
+    private final BundleFormatsMap bundleFormatsMap;
 
 
     // give a format code, this method can return all bundles(Integer type) in descending.
-    public Set<Integer> getDescendingBundles (String code){
+    public Set<Integer> getDescendingBundles(String code) {
         // get all bundle from budleFormats map
         Set<Integer> bundles = bundleFormatsMap.createFormatsMap().get(code).keySet()
                 .stream()
@@ -33,15 +33,13 @@ public class QueryBundleFormatsMap {
     }
 
     // given a format code and a bundles number, this method will return money number(BigDecimal).
-    public BigDecimal getBundleMoney (String code, String bundle){
+    public BigDecimal getBundleMoney(String code, String bundle) {
 
-       String result = bundleFormatsMap.createFormatsMap().get(code).get(bundle);
-       BigDecimal money = new BigDecimal(result);
+        String result = bundleFormatsMap.createFormatsMap().get(code).get(bundle);
+        BigDecimal money = new BigDecimal(result);
 
-       return money;
+        return money;
     }
-
-
 
 
 }

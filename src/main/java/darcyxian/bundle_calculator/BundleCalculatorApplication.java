@@ -9,10 +9,10 @@ public class BundleCalculatorApplication {
 
     public static void main(String[] args) {
 
-       SpringApplication.run(BundleCalculatorApplication.class, args);
+        SpringApplication.run(BundleCalculatorApplication.class, args);
 
-    // Input a = new Input() ;
-     // a.grabInputData();
+        // Input a = new Input() ;
+        // a.grabInputData();
 //        DataBootstrap dataBootstrap = new DataBootstrap();
 //        DataModel dataModel = new DataModel();
 //        List<DataModel> dataModels = dataBootstrap.loadData(dataModel);
@@ -20,7 +20,6 @@ public class BundleCalculatorApplication {
 ////        buddleFormats.createFormatsMap(test);
 //        Output output = new Output();
 //        output.displayFormats(dataModels);
-
 
 
     }
