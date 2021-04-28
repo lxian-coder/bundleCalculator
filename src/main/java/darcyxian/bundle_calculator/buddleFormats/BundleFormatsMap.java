@@ -19,7 +19,7 @@ import java.util.Map;
 @Component
 @Slf4j
 @AllArgsConstructor
-public class BuddleFormats {
+public class BundleFormatsMap {
      DataBootstrap dataBootstrap;
      // convert the datamodels list to Hashmap which includs the key: foramtCode and the value: buddle map
     public HashMap<String,HashMap<String,String>> createFormatsMap(){

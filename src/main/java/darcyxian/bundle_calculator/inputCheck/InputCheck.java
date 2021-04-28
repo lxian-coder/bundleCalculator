@@ -1,8 +1,8 @@
 package darcyxian.bundle_calculator.inputCheck;
 
-import darcyxian.bundle_calculator.buddleFormats.BuddleFormats;
+import darcyxian.bundle_calculator.buddleFormats.BundleFormatsMap;
+import darcyxian.bundle_calculator.calculate.Calculate;
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
-import darcyxian.bundle_calculator.grabDataFromConsole.GrabDataFromConsole;
 import darcyxian.bundle_calculator.output.Output;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -17,8 +17,8 @@ import java.util.List;
 public class InputCheck {
     private DataBootstrap dataBootstrap;
     private Output output;
-    private BuddleFormats buddleFormats;
-
+    private BundleFormatsMap bundleFormatsMap;
+    private Calculate calculate;
 
     public boolean checkTheInputList(List<String> list) {
         int listSize = list.size();
@@ -38,11 +38,12 @@ public class InputCheck {
                     return false;
                 }
                 // check if the string is the format code or not
-            }else if (!buddleFormats.createFormatsMap().containsKey(list.get(i))) {
+            }else if (!bundleFormatsMap.createFormatsMap().containsKey(list.get(i))) {
                 System.out.println('"' + list.get(i) + '"'+ " is Not a format code! Please check and input again!");
                 return  false;
             }
         }
+       calculate.calculateTheInput(list);
         return true;
     }
 
