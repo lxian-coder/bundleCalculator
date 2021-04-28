@@ -1,4 +1,4 @@
-package darcyxian.bundle_calculator.calculate;
+package darcyxian.bundle_calculator.calculator;
 
 import darcyxian.bundle_calculator.buddleFormats.QueryBundleFormatsMap;
 import darcyxian.bundle_calculator.output.Output;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  */
 @Component
 @AllArgsConstructor
-public class Calculate {
+public class Calculator {
     private final QueryBundleFormatsMap queryBundleFormatsMap;
     private final Output output;
 

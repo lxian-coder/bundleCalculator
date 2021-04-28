@@ -1,7 +1,7 @@
 package darcyxian.bundle_calculator.inputCheck;
 
 import darcyxian.bundle_calculator.buddleFormats.BundleFormatsMap;
-import darcyxian.bundle_calculator.calculate.Calculate;
+import darcyxian.bundle_calculator.calculator.Calculator;
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundle_calculator.output.Output;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class InputCheck {
     private final DataBootstrap dataBootstrap;
     private final Output output;
     private final BundleFormatsMap bundleFormatsMap;
-    private final Calculate calculate;
+    private final Calculator calculator;
 
     public boolean checkTheInputList(List<String> list) {
         int listSize = list.size();
@@ -43,7 +43,7 @@ public class InputCheck {
                 return false;
             }
         }
-        calculate.calculateTheInput(list);
+        calculator.calculateTheInput(list);
         return true;
     }
 
