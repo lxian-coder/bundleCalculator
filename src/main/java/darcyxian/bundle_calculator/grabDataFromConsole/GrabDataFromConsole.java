@@ -39,7 +39,7 @@ public class GrabDataFromConsole {
         List<String> inputData = new ArrayList<String>(Arrays.asList(s.split(" ")));
         // remove empty elements from the list
         inputData.removeAll(Arrays.asList(""));
-        System.out.println("inptData : " + inputData);
+       // System.out.println("inptData : " + inputData);
         return inputData ;
     }
 

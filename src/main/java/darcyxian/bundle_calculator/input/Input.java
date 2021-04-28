@@ -34,7 +34,6 @@ public class Input implements ApplicationListener<ContextClosedEvent> {
     // grab data inputted by users from console
      public void grabInputData(){
 
-         System.out.println(new BigDecimal("1"));
          output.displayFormats();
         while (true){
             List<String> list =grabDataFromConsole.scanDataFromConsole();
