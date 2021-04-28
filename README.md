@@ -10,7 +10,7 @@ This Bundle Calculator can accept your orders and calculate the bundles and mone
 * You need to put format code behind the number of posts like: "number of posts"  "format code",for example: 10  img, means you want to order 10 Images.
 * You need to click ENTER twice to finish you order, and all you entered is case-insensitive.
 * You can order multiple items at one time in one line like "10 img 12 flac 23 vid", or in series lines
-  <br>"
+  <br>"<br>
   10 img <br>
   12 flac <br>
   23 void <br>
