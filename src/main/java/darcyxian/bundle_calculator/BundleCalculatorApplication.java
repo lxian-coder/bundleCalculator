@@ -11,15 +11,6 @@ public class BundleCalculatorApplication {
 
         SpringApplication.run(BundleCalculatorApplication.class, args);
 
-        // Input a = new Input() ;
-        // a.grabInputData();
-//        DataBootstrap dataBootstrap = new DataBootstrap();
-//        DataModel dataModel = new DataModel();
-//        List<DataModel> dataModels = dataBootstrap.loadData(dataModel);
-////        BuddleFormats buddleFormats = new BuddleFormats();
-////        buddleFormats.createFormatsMap(test);
-//        Output output = new Output();
-//        output.displayFormats(dataModels);
 
 
     }

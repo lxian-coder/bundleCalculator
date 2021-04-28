@@ -38,6 +38,7 @@ public class Calculator {
         output.displayTheFinalResult(calculationResultMap, orderedFormatCodes, orderedPosts);
         return calculationResultMap;
     }
+
     public Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
         int bundlesSize = descendingBundles.size();
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();

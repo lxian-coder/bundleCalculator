@@ -35,11 +35,12 @@ public class CalculatorTest {
 
     @Mock
     private  Output output;
+
     @InjectMocks
     Calculator calculator;
 
     @BeforeEach
-      public  void setup(){
+      public void setup(){
        bundles.add(10);
        bundles.add(5);
        descBundles.addAll(bundles);
