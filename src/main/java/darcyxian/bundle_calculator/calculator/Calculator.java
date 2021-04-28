@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 @Component
 @AllArgsConstructor
 public class Calculator {
-    private final QueryBundleFormatsMap queryBundleFormatsMap;
-    private final Output output;
+    private  QueryBundleFormatsMap queryBundleFormatsMap;
+    private  Output output;
 
     public Map<String, Map<Integer, Integer>> calculateTheInput(List<String> inputList) {
         Map<String, Map<Integer, Integer>> calculationResultMap = new HashMap<>();
@@ -38,8 +38,7 @@ public class Calculator {
         output.displayTheFinalResult(calculationResultMap, orderedFormatCodes, orderedPosts);
         return calculationResultMap;
     }
-
-    public Map<Integer, Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
+    public Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
         int bundlesSize = descendingBundles.size();
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();
         Iterator<Integer> it = descendingBundles.iterator();
@@ -49,10 +48,8 @@ public class Calculator {
         smallDescendingBundles.addAll(copyDescendingBundles);
         for (int i = 0; i < bundlesSize - 1; i++) {
 
-            //   System.out.println("check decendingBund :"+descendingBundles);
-            //  System.out.println("Check the New SmallBUndles:"+smallDescendingBundles);
             bundleBreakDownMap = getBundleBreakdownMapCalculator(smallDescendingBundles, posts);
-            // check if the return is a successfull map
+            // check if the return is a successful map
             if (bundleBreakDownMap.containsKey(-1)) {
 
                 // faild. posts  can not be exactly divided
@@ -62,7 +59,6 @@ public class Calculator {
                 smallDescendingBundles.remove(maxBundles);
             } else {
                 // success, finish and return result map
-
                 return bundleBreakDownMap;
             }
         }
@@ -70,13 +66,11 @@ public class Calculator {
         // here, we still can not get the posts bundled, we need to change posts and calculate again.
         int postsInt = bundleBreakDownMap.get(-1).intValue();
         int bundle = it.next();
-
         int changedPosts = posts.intValue() - postsInt + bundle;
 
-        System.out.println("Please notice: " + code + " basis is " + descendingBundles + " and " + posts + " posts you entered can not be bundled.\n" +
+        System.out.println("Please notice: " + code + " basis is " + descendingBundles + " and " + posts + " posts you entered can not be bundled without remainder.\n" +
                 "Remainder is " + postsInt + " so according to the minimal bundle, your posts has been bundled with " + changedPosts + ".\n" +
-                "Your are free to re-enter your order.\n");
-
+                "Your are free to re-enter your order if you want.\n");
         return getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
     }
 

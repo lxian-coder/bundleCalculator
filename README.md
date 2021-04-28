@@ -1,6 +1,6 @@
 # BundleCalculator Introduction
 
-This Bundle Calculator can accept your order and calculate the bundles and money based on the submission format for you.
+This Bundle Calculator can accept your orders and calculate the bundles and money based on the submission format for you.
 
 ## How to use this calculator
 
@@ -10,13 +10,13 @@ This Bundle Calculator can accept your order and calculate the bundles and money
 * You need to put format code behind the number of posts like: "number of posts"  "format code".for example: 10  img, means you want to order 10 Images.
 * You need to click ENTER twice to finish you order, and the order you entered is case-insensitive.
 * You can order multiple items at one time like "10 img 12 flac 23 vid", or
-  "
+  <br>"<br>
   10 img <br>
   12 flac <br>
   23 void <br>
   "
 * If you enter wrong format code, incomplete order, or something else wrong with your order, calculator will feed back you instructions and allow you re-enter the order.
-* If the number of posts you entered can not be bundled without remainder, calculator will deduct the remainder from your order and add a minimal bundle to it and then calculate the numbers of bundles and money. Of course, you will get all details of the change.
+* If the number of posts you entered can not be bundled without remainder, calculator will deduct the remainder from your order and add a minimal bundle to it and then calculate the numbers of bundles and money. Of course, you will get all details information of the change.
 ### How to change submission format?
 
 * It is easy to change the default submission format, you can find a "DataBoostrap" class, and a "loadData" method defined in it. All calculation operated by the calculator depends on the default data initialized by the "DataBoostrap" class. You can easily update it to change the submission format.

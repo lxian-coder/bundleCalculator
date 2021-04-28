@@ -49,13 +49,11 @@ public class Output {
             Set<Integer> displayBundles = calculationMap.get(code).keySet();
             displayTheFinalResultHelper(code, displayBundles, calculationMap, posts.get(i));
         }
-
     }
 
     public void displayTheFinalResultHelper(String code, Set<Integer> displayBundles, Map<String, Map<Integer, Integer>> calculationMap, Integer post) {
         BigDecimal moneySum = new BigDecimal(0);
         BigDecimal money;
-
 
         Iterator<Integer> it = displayBundles.iterator();
         List<String> ss = new ArrayList<>();
