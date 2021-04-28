@@ -7,10 +7,10 @@ This Bundle Calculator can accept your orders and calculate the bundles and mone
 ### How to input order？
 
 * Run this application, and the submission format form will pop up, and you can enter an order according to the information of the form.
-* You need to put format code behind the number of posts like: "number of posts"  "format code".for example: 10  img, means you want to order 10 Images.
-* You need to click ENTER twice to finish you order, and the order you entered is case-insensitive.
-* You can order multiple items at one time like "10 img 12 flac 23 vid", or
-  <br>"<br>
+* You need to put format code behind the number of posts like: "number of posts"  "format code",for example: 10  img, means you want to order 10 Images.
+* You need to click ENTER twice to finish you order, and all you entered is case-insensitive.
+* You can order multiple items at one time in one line like "10 img 12 flac 23 vid", or in series lines
+  <br>"
   10 img <br>
   12 flac <br>
   23 void <br>
@@ -24,9 +24,9 @@ This Bundle Calculator can accept your orders and calculate the bundles and mone
 ## Advantages of this application
 
 * Lombok makes our life easier. It automatically generates getter,setter,constructor, hashcode,log etc.
-* User-friendly. It is easy for user to enter order. It is case-insensitive, and you can order one item or more items as you want. You can write you order in one line or series lines.
+* User-friendly. It is easy for user to enter orders. It is case-insensitive, and users can order one item or more items as they want. They are free to enter orders in one line or in series lines.
 * Mistype prevention.If there is something wrong with the order submitted by users, this calculator will check the problem and feed back users with details instruction.
-* Maintainable. This application put much importance on maintainable. It is easy to change the submission format by update the "Databoostrap" class.
+* Maintainable. This application put much importance on maintainable. It is easy to change the "Submission Format" by update the "Databoostrap" class.
 
 ## Tech Stack:
 
