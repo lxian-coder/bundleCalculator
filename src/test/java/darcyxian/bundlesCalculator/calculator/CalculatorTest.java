@@ -1,7 +1,7 @@
-package darcyxian.bundle_calculator.calculator;
+package darcyxian.bundlesCalculator.calculator;
 
-import darcyxian.bundle_calculator.buddleFormatsMap.BundleFormatsMap;
-import darcyxian.bundle_calculator.output.Output;
+import darcyxian.bundlesCalculator.bundleFormatsMap.BundleFormatsMap;
+import darcyxian.bundlesCalculator.output.Output;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,4 +1,4 @@
-package darcyxian.bundle_calculator.dataModel;
+package darcyxian.bundlesCalculator.dataModel;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package darcyxian.bundle_calculator;
+package darcyxian.bundlesCalculator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

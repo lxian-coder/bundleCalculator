@@ -1,9 +1,9 @@
-package darcyxian.bundle_calculator.input;
+package darcyxian.bundlesCalculator.input;
 
 
-import darcyxian.bundle_calculator.grabDataFromConsole.GrabDataFromConsole;
-import darcyxian.bundle_calculator.inputCheck.InputCheck;
-import darcyxian.bundle_calculator.output.Output;
+import darcyxian.bundlesCalculator.inputScanner.InputScanner;
+import darcyxian.bundlesCalculator.inputCheck.InputCheck;
+import darcyxian.bundlesCalculator.output.Output;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
@@ -22,16 +22,17 @@ public class Input implements ApplicationListener<ContextClosedEvent> {
 
     private final InputCheck inputCheck;
     private final Output output;
-    private final GrabDataFromConsole grabDataFromConsole;
+    private final InputScanner inputScanner;
 
     // grab data inputted by users from console
     public void grabInputData() {
 
         output.displayFormats();
         while (true) {
-            List<String> list = grabDataFromConsole.scanDataFromConsole();
-            // if check faild, users need to input again, otherwise input will be finished
-            if (inputCheck.checkTheInputList(list)) break;
+            List<String> list = inputScanner.scanDataFromConsole();
+            // if check failed, users need to input again, otherwise input will be finished
+            List<String> resultList = inputCheck.checkTheInputList(list);
+            if (resultList != null) break;
         }
 
     }

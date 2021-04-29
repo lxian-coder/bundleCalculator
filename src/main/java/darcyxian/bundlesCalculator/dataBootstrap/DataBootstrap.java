@@ -1,6 +1,6 @@
-package darcyxian.bundle_calculator.dataBootstrap;
+package darcyxian.bundlesCalculator.dataBootstrap;
 
-import darcyxian.bundle_calculator.dataModel.DataModel;
+import darcyxian.bundlesCalculator.dataModel.DataModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

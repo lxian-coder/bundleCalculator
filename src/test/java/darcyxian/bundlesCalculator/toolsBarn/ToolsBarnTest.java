@@ -1,4 +1,4 @@
-package darcyxian.bundle_calculator.toolsBarn;
+package darcyxian.bundlesCalculator.toolsBarn;
 
 
 import org.junit.jupiter.api.Test;

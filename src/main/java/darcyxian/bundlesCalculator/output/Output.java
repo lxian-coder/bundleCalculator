@@ -1,8 +1,8 @@
-package darcyxian.bundle_calculator.output;
+package darcyxian.bundlesCalculator.output;
 
-import darcyxian.bundle_calculator.buddleFormatsMap.BundleFormatsMap;
-import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
-import darcyxian.bundle_calculator.dataModel.DataModel;
+import darcyxian.bundlesCalculator.bundleFormatsMap.BundleFormatsMap;
+import darcyxian.bundlesCalculator.dataBootstrap.DataBootstrap;
+import darcyxian.bundlesCalculator.dataModel.DataModel;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
