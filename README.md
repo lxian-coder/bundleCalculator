@@ -16,7 +16,7 @@ This Bundle Calculator can accept your orders and calculate the bundles and mone
   23 void <br>
   "
 * If you enter wrong format code, incomplete order, or something else wrong with your order, calculator will feed back you instructions and allow you re-enter the order.
-* If the number of posts you entered can not be bundled without remainder, calculator will deduct the remainder from your order and add a minimal bundle to it and then calculate the numbers of bundles and money. Of course, you will get all details information of the change.
+* If the number of posts you entered can not be bundled without remainder, calculator will start a loop to add 1 to your posts everytime to find out the smallest number of bundles. Of course, you will get all detail information of that process.
 ### How to change submission format?
 
 * It is easy to change the default submission format, you can find a "DataBoostrap" class, and a "loadData" method defined in it. All calculation operated by the calculator depends on the default data initialized by the "DataBoostrap" class. You can easily update it to change the submission format.
