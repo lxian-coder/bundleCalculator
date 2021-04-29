@@ -17,7 +17,6 @@ import java.util.*;
 @Slf4j
 public class Calculator {
     private BundleFormatsMap bundleFormatsMap;
-    private  Output output;
     private ToolsBarn toolsBarn;
 
     public Map<String, Map<Integer, Integer>> getCalculationResultMap(List<String> inputList) {
@@ -30,28 +29,22 @@ public class Calculator {
             Map<Integer, Integer> bundlesBreakDown = getCalculationResultMapController(descendingBundles, orderedPosts.get(i), orderedFormatCodes.get(i));
             calculationResultMap.put(orderedFormatCodes.get(i), bundlesBreakDown);
         }
-        // System.out.println("calculationMap :"+calculationResultMap);
-        output.displayTheFinalResult(calculationResultMap, orderedFormatCodes, orderedPosts);
         return calculationResultMap;
     }
 
-    public Map<Integer,Integer> getCalculationResultMapController(Set<Integer> descendingBundles, Integer posts, String code){
+    private Map<Integer,Integer> getCalculationResultMapController(Set<Integer> descendingBundles, Integer posts, String code){
         boolean failedMap = false;
-        int changedPosts = 0;
+        int changedPosts = posts.intValue();
       Map<Integer,Integer> bundleBreakDownMap;
       bundleBreakDownMap = getBundleBreakdownMap( descendingBundles, posts, code);
         failedMap = bundleBreakDownMap.containsKey(-1);
         // here, we still can not get the posts bundled, we need to add 1 to posts to try to bundle.
-        if(failedMap) {
-            for(int i = 1;i <= descendingBundles.iterator().next().intValue();i++) {
-                changedPosts = posts.intValue() + i ;
-                bundleBreakDownMap = getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
-                failedMap = bundleBreakDownMap.containsKey(-1);
-                if (!failedMap) break;
-            }
+        while(failedMap){
+            changedPosts++ ;
+            bundleBreakDownMap = getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
+            failedMap = bundleBreakDownMap.containsKey(-1);
         }
-
-        if(changedPosts != 0){
+        if(changedPosts != posts.intValue()){
             System.out.println("Please notice: " + code + " basis is " + descendingBundles + " and " + posts + " posts you entered can not be bundled without remainder.\n" +
                     "so in order to get smallest bundles, your posts has been bundled with " + changedPosts + ".\n" +
                     "Your are free to re-enter your order if you want.\n");
@@ -61,7 +54,7 @@ public class Calculator {
     }
 
 
-    public Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
+    private Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
         int bundlesSize = descendingBundles.size();
 
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();
@@ -89,8 +82,7 @@ public class Calculator {
         return bundleBreakDownMap;
     }
 
-    public Map<Integer, Integer> getBundleBreakdownMapCalculator(Set<Integer> descendingBundles, Integer posts) {
-
+    private Map<Integer, Integer> getBundleBreakdownMapCalculator(Set<Integer> descendingBundles, Integer posts) {
         int postsInt = posts.intValue();
         int bundle = 0;
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();

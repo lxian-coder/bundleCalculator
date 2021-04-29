@@ -18,27 +18,22 @@ import java.util.List;
 @Slf4j
 @Component
 @AllArgsConstructor
-public class Input implements ApplicationListener<ContextClosedEvent> {
+public class Input {
 
     private final InputCheck inputCheck;
     private final Output output;
     private final InputScanner inputScanner;
 
     // grab data inputted by users from console
-    public void grabInputData() {
-
+    public List<String> grabInputData() {
+        List<String> resultList ;
         output.displayFormats();
         while (true) {
             List<String> list = inputScanner.scanDataFromConsole();
             // if check failed, users need to input again, otherwise input will be finished
-            List<String> resultList = inputCheck.checkTheInputList(list);
+            resultList = inputCheck.checkTheInputList(list);
             if (resultList != null) break;
         }
-
-    }
-    // convert string to a list eliminated empty elements;
-    @Override
-    public void onApplicationEvent(ContextClosedEvent event) {
-        grabInputData();
+       return  resultList;
     }
 }

@@ -46,7 +46,6 @@ public class InputCheck {
                 return null;
             }
         }
-        calculator.getCalculationResultMap(list);
         return list;
     }
 

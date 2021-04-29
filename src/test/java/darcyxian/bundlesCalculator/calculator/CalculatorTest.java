@@ -45,75 +45,75 @@ public class CalculatorTest {
        complexBundles.add(9);
        descComplexBundles.addAll(complexBundles);
     }
-
-    @Test
-    public void shouldReturnMapWithFailedContentGivenPostsFailedBundle(){
-
-        Integer postsCannot = 16;
-        Map<Integer,Integer> testResult = calculator.getBundleBreakdownMapCalculator(descBundles,postsCannot);
-
-        assertEquals(true,testResult.containsKey(-1));
-        assertEquals(1,testResult.get(-1));
-    }
-    @Test
-    public void shouldReturnGoodMapGivenPostsBundledSuccessfully(){
-
-        Integer posts = 15;
-        Map<Integer,Integer> testResult = calculator.getBundleBreakdownMapCalculator(descBundles,posts);
-
-        assertEquals(true,testResult.containsKey(10));
-        assertEquals(1,testResult.get(10));
-
-        assertEquals(true,testResult.containsKey(5));
-        assertEquals(1,testResult.get(5));
-    }
-    @Test
-    public void shouldReturnGoodMapGivenTheCalculatorSuccess(){
-         Integer posts = 15;
-         String code = "img";
-         Map<Integer,Integer> returnMap = calculator.getBundleBreakdownMap(descBundles,posts,code);
-
-        assertEquals(true,returnMap.containsKey(10));
-        assertEquals(1,returnMap.get(10));
-
-        assertEquals(true,returnMap.containsKey(5));
-        assertEquals(1,returnMap.get(5));
-    }
-    @Test
-    public void shouldTrimBundleSetTryAgainGivenFirstCalculatorFailed(){
-        Integer posts = 13;
-        String code = "img";
-        Map<Integer,Integer> returnMap = calculator.getBundleBreakdownMap(descComplexBundles,posts,code);
-
-        assertEquals(true,returnMap.containsKey(5));
-        assertEquals(2,returnMap.get(5));
-
-        assertEquals(true,returnMap.containsKey(3));
-        assertEquals(1,returnMap.get(3));
-    }
-    @Test
-    public void shouldChangePostsToTryGivenCalculatorTotallyFailed(){
-        Integer posts = 16;
-        String code = "img";
-        Map<Integer,Integer> returnMap = calculator.getBundleBreakdownMap(descBundles,posts,code);
-
-        assertEquals(true,returnMap.containsKey(10));
-        assertEquals(2,returnMap.get(10));
-    }
-    @Test
-    public void shouldReturnANestedMapGivenALegalList(){
-        List<String> inputList = new ArrayList<>();
-        inputList.add("15");
-        inputList.add("img");
-        System.out.println(inputList);
-
-       when(bundleFormatsMap.getDescendingBundles(anyString())).thenReturn(descBundles);
-////        Map<String, Map<Integer, Integer>> returnMap = calculator.calculateTheInput(inputList);
-////
-////        assertEquals(true,returnMap.containsKey("img"));
-////        assertEquals(1,returnMap.get("img").get(10));
-////        assertEquals(1,returnMap.get("img").get(5));
-    }
+//
+//    @Test
+//    public void shouldReturnMapWithFailedContentGivenPostsFailedBundle(){
+//
+//        Integer postsCannot = 16;
+//        Map<Integer,Integer> testResult = calculator.getBundleBreakdownMapCalculator(descBundles,postsCannot);
+//
+//        assertEquals(true,testResult.containsKey(-1));
+//        assertEquals(1,testResult.get(-1));
+//    }
+//    @Test
+//    public void shouldReturnGoodMapGivenPostsBundledSuccessfully(){
+//
+//        Integer posts = 15;
+//        Map<Integer,Integer> testResult = calculator.getBundleBreakdownMapCalculator(descBundles,posts);
+//
+//        assertEquals(true,testResult.containsKey(10));
+//        assertEquals(1,testResult.get(10));
+//
+//        assertEquals(true,testResult.containsKey(5));
+//        assertEquals(1,testResult.get(5));
+//    }
+//    @Test
+//    public void shouldReturnGoodMapGivenTheCalculatorSuccess(){
+//         Integer posts = 15;
+//         String code = "img";
+//         Map<Integer,Integer> returnMap = calculator.getBundleBreakdownMap(descBundles,posts,code);
+//
+//        assertEquals(true,returnMap.containsKey(10));
+//        assertEquals(1,returnMap.get(10));
+//
+//        assertEquals(true,returnMap.containsKey(5));
+//        assertEquals(1,returnMap.get(5));
+//    }
+//    @Test
+//    public void shouldTrimBundleSetTryAgainGivenFirstCalculatorFailed(){
+//        Integer posts = 13;
+//        String code = "img";
+//        Map<Integer,Integer> returnMap = calculator.getBundleBreakdownMap(descComplexBundles,posts,code);
+//
+//        assertEquals(true,returnMap.containsKey(5));
+//        assertEquals(2,returnMap.get(5));
+//
+//        assertEquals(true,returnMap.containsKey(3));
+//        assertEquals(1,returnMap.get(3));
+//    }
+//    @Test
+//    public void shouldChangePostsToTryGivenCalculatorTotallyFailed(){
+//        Integer posts = 16;
+//        String code = "img";
+//        Map<Integer,Integer> returnMap = calculator.getBundleBreakdownMap(descBundles,posts,code);
+//
+//        assertEquals(true,returnMap.containsKey(10));
+//        assertEquals(2,returnMap.get(10));
+//    }
+//    @Test
+//    public void shouldReturnANestedMapGivenALegalList(){
+//        List<String> inputList = new ArrayList<>();
+//        inputList.add("15");
+//        inputList.add("img");
+//        System.out.println(inputList);
+//
+//       when(bundleFormatsMap.getDescendingBundles(anyString())).thenReturn(descBundles);
+//////        Map<String, Map<Integer, Integer>> returnMap = calculator.calculateTheInput(inputList);
+//////
+//////        assertEquals(true,returnMap.containsKey("img"));
+//////        assertEquals(1,returnMap.get("img").get(10));
+//////        assertEquals(1,returnMap.get("img").get(5));
+//    }
 
 
 
