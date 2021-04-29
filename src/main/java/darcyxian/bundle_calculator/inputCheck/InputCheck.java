@@ -1,6 +1,6 @@
 package darcyxian.bundle_calculator.inputCheck;
 
-import darcyxian.bundle_calculator.buddleFormats.BundleFormatsMap;
+import darcyxian.bundle_calculator.buddleFormatsMap.BundleFormatsMap;
 import darcyxian.bundle_calculator.calculator.Calculator;
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundle_calculator.output.Output;
@@ -20,8 +20,7 @@ public class InputCheck {
     private  Output output;
     private  BundleFormatsMap bundleFormatsMap;
     private  Calculator calculator;
-    private ToolsBarn toolsBarn;
-
+    private  ToolsBarn toolsBarn;
 
     public boolean checkTheInputList(List<String> list) {
         int listSize = list.size();

@@ -1,9 +1,10 @@
 package darcyxian.bundle_calculator.calculator;
 
-import darcyxian.bundle_calculator.buddleFormats.QueryBundleFormatsMap;
+import darcyxian.bundle_calculator.buddleFormatsMap.BundleFormatsMap;
 import darcyxian.bundle_calculator.output.Output;
 import darcyxian.bundle_calculator.toolsBarn.ToolsBarn;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -14,8 +15,9 @@ import java.util.stream.Collectors;
  */
 @Component
 @AllArgsConstructor
+@Slf4j
 public class Calculator {
-    private  QueryBundleFormatsMap queryBundleFormatsMap;
+    private BundleFormatsMap bundleFormatsMap;
     private  Output output;
     private ToolsBarn toolsBarn;
 
@@ -32,7 +34,7 @@ public class Calculator {
                 .collect(Collectors.toList());
 
         for (int i = 0; i < orderedFormatCodes.size(); i++) {
-            Set<Integer> descendingBundles = queryBundleFormatsMap.getDescendingBundles(orderedFormatCodes.get(i));
+            Set<Integer> descendingBundles = bundleFormatsMap.getDescendingBundles(orderedFormatCodes.get(i));
             Map<Integer, Integer> bundlesBreakDown = getBundleBreakdownMap(descendingBundles, orderedPosts.get(i), orderedFormatCodes.get(i));
             calculationResultMap.put(orderedFormatCodes.get(i), bundlesBreakDown);
         }
@@ -43,6 +45,8 @@ public class Calculator {
 
     public Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
         int bundlesSize = descendingBundles.size();
+        int changedPosts = 0;
+        boolean failedMap;
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();
         Iterator<Integer> it = descendingBundles.iterator();
         Set<Integer> copyDescendingBundles = new HashSet<>(descendingBundles);
@@ -65,16 +69,18 @@ public class Calculator {
                 return bundleBreakDownMap;
             }
         }
+        failedMap = bundleBreakDownMap.containsKey(-1);
+        // here, we still can not get the posts bundled, we need to add 1 to posts to try to bundle.
+          if(failedMap){
 
-        // here, we still can not get the posts bundled, we need to change posts and calculate again.
-        int postsInt = bundleBreakDownMap.get(-1).intValue();
-        int bundle = it.next();
-        int changedPosts = posts.intValue() - postsInt + bundle;
+              changedPosts = posts.intValue() + 1 ;
+              bundleBreakDownMap= getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
+          }
 
         System.out.println("Please notice: " + code + " basis is " + descendingBundles + " and " + posts + " posts you entered can not be bundled without remainder.\n" +
-                "Remainder is " + postsInt + " so according to the minimal bundle, your posts has been bundled with " + changedPosts + ".\n" +
+                "so in order to get smallest bundles, your posts has been bundled with " + changedPosts + ".\n" +
                 "Your are free to re-enter your order if you want.\n");
-        return getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
+        return bundleBreakDownMap;
     }
 
     public Map<Integer, Integer> getBundleBreakdownMapCalculator(Set<Integer> descendingBundles, Integer posts) {
@@ -108,5 +114,5 @@ public class Calculator {
         return bundleBreakDownMap;
     }
 
-
 }
+

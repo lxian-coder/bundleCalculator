@@ -1,6 +1,6 @@
 package darcyxian.bundle_calculator.output;
 
-import darcyxian.bundle_calculator.buddleFormats.QueryBundleFormatsMap;
+import darcyxian.bundle_calculator.buddleFormatsMap.BundleFormatsMap;
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundle_calculator.dataModel.DataModel;
 import lombok.AllArgsConstructor;
@@ -18,9 +18,8 @@ import java.util.*;
 @AllArgsConstructor
 public class Output {
     private final DataBootstrap dataBootstrap;
-    private final QueryBundleFormatsMap queryBundleFormatsMap;
+    private final BundleFormatsMap bundleFormatsMap;
 
-    // display the form
     public void displayFormats() {
         List<DataModel> dataModels = dataBootstrap.loadData();
         String foramtsDisplay = "\nSubmission Format | format code | Bundles \n----------------- | ----------- | -------";
@@ -35,7 +34,6 @@ public class Output {
         });
     }
 
-    // display the wrong message when input check faild
     public void displayWrongMessage() {
         System.out.println("Sorry, the format of your input is not correct. A legal order looks like:<Numbers of buddles> <formatcode> ");
         System.out.println("You can check the form below and make an order again.");
@@ -60,7 +58,7 @@ public class Output {
         for (int i = 0; i < displayBundles.size(); i++) {
             int bundles = it.next();
             int num = calculationMap.get(code).get(bundles);
-            BigDecimal queryMoney = queryBundleFormatsMap.getBundleMoney(code, String.valueOf(bundles));
+            BigDecimal queryMoney =bundleFormatsMap.getBundleMoney(code, String.valueOf(bundles));
             money = BigDecimal.valueOf(num).multiply(queryMoney);
             String s = ("    " + num + " X " + bundles + " $" + money);
             ss.add(s);
@@ -68,7 +66,6 @@ public class Output {
         }
         System.out.println(post + " " + code + " $" + moneySum);
         ss.stream().forEach(e -> System.out.println(e));
-
     }
 
 

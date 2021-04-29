@@ -36,8 +36,6 @@ public class Input implements ApplicationListener<ContextClosedEvent> {
 
     }
     // convert string to a list eliminated empty elements;
-
-
     @Override
     public void onApplicationEvent(ContextClosedEvent event) {
         grabInputData();

@@ -33,11 +33,19 @@ public class DataBootstrap {
 
         DataModel video = new DataModel();
         video.setFormatName("Video");
-        video.setFormatCode("VID");
+        video.setFormatCode("Vid");
         video.getBundles().put("3", "570");
         video.getBundles().put("5", "900");
         video.getBundles().put("9", "1530");
         dataModels.add(video);
+
+        DataModel test = new DataModel();
+        test.setFormatName("Test");
+        test.setFormatCode("test");
+        test.getBundles().put("3", "100.50");
+        test.getBundles().put("5", "210");
+        test.getBundles().put("10", "557.50");
+        dataModels.add(test);
 
         return dataModels;
     }
