@@ -28,7 +28,6 @@ public class BundleFormatsMap {
             formatsMap.put(dataModel.getFormatCode().toLowerCase(), dataModel.getBundles());
         });
 
-
         return formatsMap;
     }
 

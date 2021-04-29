@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 public class QueryBundleFormatsMap {
     private final BundleFormatsMap bundleFormatsMap;
 
-
     // give a format code, this method can return all bundles(Integer type) in descending.
     public Set<Integer> getDescendingBundles(String code) {
         // get all bundle from budleFormats map
@@ -40,6 +39,5 @@ public class QueryBundleFormatsMap {
 
         return money;
     }
-
 
 }

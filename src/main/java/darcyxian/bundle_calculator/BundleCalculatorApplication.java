@@ -11,8 +11,6 @@ public class BundleCalculatorApplication {
 
         SpringApplication.run(BundleCalculatorApplication.class, args);
 
-
-
     }
 
 }

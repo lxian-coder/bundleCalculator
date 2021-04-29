@@ -4,6 +4,7 @@ import darcyxian.bundle_calculator.buddleFormats.BundleFormatsMap;
 import darcyxian.bundle_calculator.calculator.Calculator;
 import darcyxian.bundle_calculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundle_calculator.output.Output;
+import darcyxian.bundle_calculator.toolsBarn.ToolsBarn;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +16,12 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class InputCheck {
-    private final DataBootstrap dataBootstrap;
-    private final Output output;
-    private final BundleFormatsMap bundleFormatsMap;
-    private final Calculator calculator;
+    private  DataBootstrap dataBootstrap;
+    private  Output output;
+    private  BundleFormatsMap bundleFormatsMap;
+    private  Calculator calculator;
+    private ToolsBarn toolsBarn;
+
 
     public boolean checkTheInputList(List<String> list) {
         int listSize = list.size();
@@ -33,7 +36,7 @@ public class InputCheck {
         for (int i = 0; i < listSize; i++) {
             // check if the string is number or not
             if (i % 2 == 0) {
-                if (!isStrToNum(list.get(i))) {
+                if (!toolsBarn.isStrToNum(list.get(i))) {
                     System.out.println('"' + list.get(i) + '"' + " is not a number! Please check and input again!");
                     return false;
                 }
@@ -47,14 +50,7 @@ public class InputCheck {
         return true;
     }
 
-    public boolean isStrToNum(String str) {
-        try {
-            Integer.parseInt(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+
 }
 
 

@@ -2,6 +2,7 @@ package darcyxian.bundle_calculator.calculator;
 
 import darcyxian.bundle_calculator.buddleFormats.QueryBundleFormatsMap;
 import darcyxian.bundle_calculator.output.Output;
+import darcyxian.bundle_calculator.toolsBarn.ToolsBarn;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,17 +17,18 @@ import java.util.stream.Collectors;
 public class Calculator {
     private  QueryBundleFormatsMap queryBundleFormatsMap;
     private  Output output;
+    private ToolsBarn toolsBarn;
 
     public Map<String, Map<Integer, Integer>> calculateTheInput(List<String> inputList) {
         Map<String, Map<Integer, Integer>> calculationResultMap = new HashMap<>();
         // put posts number entered by users into a list
         List<Integer> orderedPosts = inputList.stream()
-                .filter(element -> isStrToNum(element) == true)
+                .filter(element -> toolsBarn.isStrToNum(element) == true)
                 .map(e -> Integer.parseInt(e))
                 .collect(Collectors.toList());
         // put format code entered by users into a list
         List<String> orderedFormatCodes = inputList.stream()
-                .filter(element -> isStrToNum(element) == false)
+                .filter(element -> toolsBarn.isStrToNum(element) == false)
                 .collect(Collectors.toList());
 
         for (int i = 0; i < orderedFormatCodes.size(); i++) {
@@ -106,12 +108,5 @@ public class Calculator {
         return bundleBreakDownMap;
     }
 
-    public boolean isStrToNum(String str) {
-        try {
-            Integer.parseInt(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+
 }
