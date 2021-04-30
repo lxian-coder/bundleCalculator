@@ -26,15 +26,15 @@ public class Calculator {
 
         for (int i = 0; i < orderedFormatCodes.size(); i++) {
             Set<Integer> descendingBundles = bundleFormatsMap.getDescendingBundles(orderedFormatCodes.get(i));
-            Map<Integer, Integer> bundlesBreakDown = getCalculationResultMapController(descendingBundles, orderedPosts.get(i), orderedFormatCodes.get(i));
+            Map<Integer, Integer> bundlesBreakDown = getCalculationResultMapController(descendingBundles, orderedPosts.get(i).intValue(), orderedFormatCodes.get(i));
             calculationResultMap.put(orderedFormatCodes.get(i), bundlesBreakDown);
         }
         return calculationResultMap;
     }
 
-    private Map<Integer,Integer> getCalculationResultMapController(Set<Integer> descendingBundles, Integer posts, String code){
+    private Map<Integer,Integer> getCalculationResultMapController(Set<Integer> descendingBundles, int posts, String code){
         boolean failedMap = false;
-        int changedPosts = posts.intValue();
+        int changedPosts = posts;
       Map<Integer,Integer> bundleBreakDownMap;
       bundleBreakDownMap = getBundleBreakdownMap( descendingBundles, posts, code);
         failedMap = bundleBreakDownMap.containsKey(-1);
@@ -44,7 +44,7 @@ public class Calculator {
             bundleBreakDownMap = getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
             failedMap = bundleBreakDownMap.containsKey(-1);
         }
-        if(changedPosts != posts.intValue()){
+        if(changedPosts != posts){
             System.out.println("Please notice: " + code + " basis is " + descendingBundles + " and " + posts + " posts you entered can not be bundled without remainder.\n" +
                     "so in order to get smallest bundles, your posts has been bundled with " + changedPosts + ".\n" +
                     "Your are free to re-enter your order if you want.\n");

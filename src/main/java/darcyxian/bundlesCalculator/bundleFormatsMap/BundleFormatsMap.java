@@ -28,7 +28,6 @@ public class BundleFormatsMap {
         dataModels.forEach(dataModel -> {
             formatsMap.put(dataModel.getFormatCode().toLowerCase(), dataModel.getBundles());
         });
-
         return formatsMap;
     }
     // give a format code, this method can return all bundles(Integer type) in descending.
