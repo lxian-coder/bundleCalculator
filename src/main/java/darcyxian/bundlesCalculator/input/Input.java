@@ -1,13 +1,11 @@
 package darcyxian.bundlesCalculator.input;
 
 
-import darcyxian.bundlesCalculator.inputScanner.InputScanner;
 import darcyxian.bundlesCalculator.inputCheck.InputCheck;
+import darcyxian.bundlesCalculator.inputScanner.InputScanner;
 import darcyxian.bundlesCalculator.output.Output;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,13 +23,13 @@ public class Input {
     private final InputScanner inputScanner;
 
     public List<String> grabInputData() {
-        List<String> resultList ;
+        List<String> resultList;
         output.displayFormats();
         while (true) {
             List<String> list = inputScanner.scanDataFromConsole();
             resultList = inputCheck.checkTheInputList(list);
             if (resultList != null) break;
         }
-       return  resultList;
+        return resultList;
     }
 }

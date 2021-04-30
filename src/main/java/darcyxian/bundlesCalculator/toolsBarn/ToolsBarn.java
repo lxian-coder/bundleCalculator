@@ -19,14 +19,16 @@ public class ToolsBarn {
             return false;
         }
     }
-    public List<Integer>  createPostList(List<String> inputList){
+
+    public List<Integer> createPostList(List<String> inputList) {
         List<Integer> orderedPosts = inputList.stream()
                 .filter(element -> isStrToNum(element) == true)
                 .map(e -> Integer.parseInt(e))
                 .collect(Collectors.toList());
         return orderedPosts;
     }
-    public List<String> createFormatCodeList(List<String> inputList){
+
+    public List<String> createFormatCodeList(List<String> inputList) {
         List<String> orderedFormatCodes = inputList.stream()
                 .filter(element -> isStrToNum(element) == false)
                 .collect(Collectors.toList());

@@ -119,8 +119,4 @@ public class CalculatorTest {
         assertEquals(1,returnMap.get("img").get(5));
     }
 
-
-
-
-
 }

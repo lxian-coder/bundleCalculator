@@ -7,7 +7,6 @@ import darcyxian.bundlesCalculator.toolsBarn.ToolsBarn;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,11 +26,9 @@ public class AppStater implements ApplicationListener<ContextClosedEvent> {
     @Override
     public void onApplicationEvent(ContextClosedEvent event) {
 
-      List<String> inputList = input.grabInputData();
-      Map<String,Map<Integer,Integer>> finalResultMap = calculator.getCalculationResultMap(inputList);
-      List<String> enteredFormatCodes = toolsBarn.createFormatCodeList(inputList);
-      List<Integer> enteredPosts = toolsBarn.createPostList(inputList);
-      output.displayTheFinalResult(finalResultMap,enteredFormatCodes,enteredPosts);
+        List<String> inputList = input.grabInputData();
+        Map<String, Map<Integer, Integer>> finalResultMap = calculator.getCalculationResultMap(inputList);
+        output.displayTheFinalResult(finalResultMap, inputList);
 
     }
 }

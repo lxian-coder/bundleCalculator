@@ -1,7 +1,6 @@
 package darcyxian.bundlesCalculator.calculator;
 
 import darcyxian.bundlesCalculator.bundleFormatsMap.BundleFormatsMap;
-import darcyxian.bundlesCalculator.output.Output;
 import darcyxian.bundlesCalculator.toolsBarn.ToolsBarn;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,18 +31,18 @@ public class Calculator {
         return calculationResultMap;
     }
 
-    private Map<Integer,Integer> getCalculationResultMapController(Set<Integer> descendingBundles, int posts, String code){
+    private Map<Integer, Integer> getCalculationResultMapController(Set<Integer> descendingBundles, int posts, String code) {
         boolean failedMap = false;
         int changedPosts = posts;
-      Map<Integer,Integer> bundleBreakDownMap;
-      bundleBreakDownMap = getBundleBreakdownMap( descendingBundles, posts, code);
+        Map<Integer, Integer> bundleBreakDownMap;
+        bundleBreakDownMap = getBundleBreakdownMap(descendingBundles, posts, code);
         failedMap = bundleBreakDownMap.containsKey(-1);
-        while(failedMap){
-            changedPosts++ ;
+        while (failedMap) {
+            changedPosts++;
             bundleBreakDownMap = getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
             failedMap = bundleBreakDownMap.containsKey(-1);
         }
-        if(changedPosts != posts){
+        if (changedPosts != posts) {
             System.out.println("Please notice: " + code + " basis is " + descendingBundles + " and " + posts + " posts you entered can not be bundled without remainder.\n" +
                     "so in order to get smallest bundles, your posts has been bundled with " + changedPosts + ".\n" +
                     "Your are free to re-enter your order if you want.\n");
@@ -51,7 +50,7 @@ public class Calculator {
         return bundleBreakDownMap;
     }
 
-    private Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
+    private Map<Integer, Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
         int bundlesSize = descendingBundles.size();
 
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();

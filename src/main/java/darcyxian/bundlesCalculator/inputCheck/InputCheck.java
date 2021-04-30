@@ -16,11 +16,11 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class InputCheck {
-    private  DataBootstrap dataBootstrap;
-    private  Output output;
-    private  BundleFormatsMap bundleFormatsMap;
-    private  Calculator calculator;
-    private  ToolsBarn toolsBarn;
+    private DataBootstrap dataBootstrap;
+    private Output output;
+    private BundleFormatsMap bundleFormatsMap;
+    private Calculator calculator;
+    private ToolsBarn toolsBarn;
 
     public List<String> checkTheInputList(List<String> list) {
         int listSize = list.size();

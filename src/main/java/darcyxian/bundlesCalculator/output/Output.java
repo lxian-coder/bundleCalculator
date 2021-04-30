@@ -3,6 +3,7 @@ package darcyxian.bundlesCalculator.output;
 import darcyxian.bundlesCalculator.bundleFormatsMap.BundleFormatsMap;
 import darcyxian.bundlesCalculator.dataBootstrap.DataBootstrap;
 import darcyxian.bundlesCalculator.dataModel.DataModel;
+import darcyxian.bundlesCalculator.toolsBarn.ToolsBarn;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import java.util.*;
 public class Output {
     private final DataBootstrap dataBootstrap;
     private final BundleFormatsMap bundleFormatsMap;
+    private final ToolsBarn toolsBarn;
 
     public void displayFormats() {
         List<DataModel> dataModels = dataBootstrap.loadData();
@@ -40,7 +42,10 @@ public class Output {
         displayFormats();
     }
 
-    public void displayTheFinalResult(Map<String, Map<Integer, Integer>> calculationMap, List<String> codes, List<Integer> posts) {
+    public void displayTheFinalResult(Map<String, Map<Integer, Integer>> calculationMap, List<String> inputList) {
+       List<String> codes = toolsBarn.createFormatCodeList(inputList);
+       List<Integer> posts = toolsBarn.createPostList(inputList);
+
         int size = codes.size();
         for (int i = 0; i < size; i++) {
             String code = codes.get(i);
@@ -58,7 +63,7 @@ public class Output {
         for (int i = 0; i < displayBundles.size(); i++) {
             int bundles = it.next();
             int num = calculationMap.get(code).get(bundles);
-            BigDecimal queryMoney =bundleFormatsMap.getBundleMoney(code, String.valueOf(bundles));
+            BigDecimal queryMoney = bundleFormatsMap.getBundleMoney(code, String.valueOf(bundles));
             money = BigDecimal.valueOf(num).multiply(queryMoney);
             String s = ("    " + num + " X " + bundles + " $" + money);
             ss.add(s);
