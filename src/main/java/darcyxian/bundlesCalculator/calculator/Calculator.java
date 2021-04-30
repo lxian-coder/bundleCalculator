@@ -38,7 +38,6 @@ public class Calculator {
       Map<Integer,Integer> bundleBreakDownMap;
       bundleBreakDownMap = getBundleBreakdownMap( descendingBundles, posts, code);
         failedMap = bundleBreakDownMap.containsKey(-1);
-        // here, we still can not get the posts bundled, we need to add 1 to posts to try to bundle.
         while(failedMap){
             changedPosts++ ;
             bundleBreakDownMap = getBundleBreakdownMapCalculator(descendingBundles, changedPosts);
@@ -49,10 +48,8 @@ public class Calculator {
                     "so in order to get smallest bundles, your posts has been bundled with " + changedPosts + ".\n" +
                     "Your are free to re-enter your order if you want.\n");
         }
-
         return bundleBreakDownMap;
     }
-
 
     private Map<Integer,Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
         int bundlesSize = descendingBundles.size();
@@ -61,21 +58,13 @@ public class Calculator {
         Iterator<Integer> it = descendingBundles.iterator();
         Set<Integer> copyDescendingBundles = new HashSet<>(descendingBundles);
         SortedSet<Integer> smallDescendingBundles = new TreeSet<Integer>(Collections.reverseOrder());
-        // get a decendingBundles copy
         smallDescendingBundles.addAll(copyDescendingBundles);
         for (int i = 0; i < bundlesSize - 1; i++) {
-
             bundleBreakDownMap = getBundleBreakdownMapCalculator(smallDescendingBundles, posts);
-            // check if the return is a successful map
             if (bundleBreakDownMap.containsKey(-1)) {
-
-                // faild. posts  can not be exactly divided
                 Integer maxBundles = it.next();
-
-                // remove max bundle and calculate again.
                 smallDescendingBundles.remove(maxBundles);
             } else {
-                // success, finish and return result map
                 return bundleBreakDownMap;
             }
         }
@@ -100,7 +89,6 @@ public class Calculator {
                 postsInt = postsInt % bundle;
             }
         }
-        // return a different map;
         if (postsInt != 0) {
             int wrong = -1;
             bundleBreakDownMap = new HashMap<>();

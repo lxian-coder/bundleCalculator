@@ -24,13 +24,11 @@ public class Input {
     private final Output output;
     private final InputScanner inputScanner;
 
-    // grab data inputted by users from console
     public List<String> grabInputData() {
         List<String> resultList ;
         output.displayFormats();
         while (true) {
             List<String> list = inputScanner.scanDataFromConsole();
-            // if check failed, users need to input again, otherwise input will be finished
             resultList = inputCheck.checkTheInputList(list);
             if (resultList != null) break;
         }
