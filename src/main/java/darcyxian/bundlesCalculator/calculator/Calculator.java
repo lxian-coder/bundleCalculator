@@ -35,7 +35,7 @@ public class Calculator {
         boolean failedMap = false;
         int changedPosts = posts;
         Map<Integer, Integer> bundleBreakDownMap;
-        bundleBreakDownMap = getBundleBreakdownMap(descendingBundles, posts, code);
+        bundleBreakDownMap = getBundleBreakdownMap(descendingBundles, posts);
         failedMap = bundleBreakDownMap.containsKey(-1);
         while (failedMap) {
             changedPosts++;
@@ -50,7 +50,7 @@ public class Calculator {
         return bundleBreakDownMap;
     }
 
-    private Map<Integer, Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, Integer posts, String code) {
+    private Map<Integer, Integer> getBundleBreakdownMap(Set<Integer> descendingBundles, int posts) {
         int bundlesSize = descendingBundles.size();
 
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();
@@ -70,8 +70,8 @@ public class Calculator {
         return bundleBreakDownMap;
     }
 
-    private Map<Integer, Integer> getBundleBreakdownMapCalculator(Set<Integer> descendingBundles, Integer posts) {
-        int postsInt = posts.intValue();
+    private Map<Integer, Integer> getBundleBreakdownMapCalculator(Set<Integer> descendingBundles, int posts) {
+        int postsInt = posts;
         int bundle = 0;
         Map<Integer, Integer> bundleBreakDownMap = new HashMap<>();
         Iterator<Integer> it = descendingBundles.iterator();
