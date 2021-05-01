@@ -50,11 +50,11 @@ public class Output {
         for (int i = 0; i < size; i++) {
             String code = codes.get(i);
             Set<Integer> displayBundles = calculationMap.get(code).keySet();
-            displayTheFinalResultHelper(code, displayBundles, calculationMap, posts.get(i));
+            displayTheFinalResultHelper(code, displayBundles, calculationMap, posts.get(i).intValue());
         }
     }
 
-    public void displayTheFinalResultHelper(String code, Set<Integer> displayBundles, Map<String, Map<Integer, Integer>> calculationMap, Integer post) {
+    public void displayTheFinalResultHelper(String code, Set<Integer> displayBundles, Map<String, Map<Integer, Integer>> calculationMap, int post) {
         BigDecimal moneySum = new BigDecimal(0);
         BigDecimal money;
 
